@@ -17,21 +17,10 @@ void main()
 	{
 		for(j=0;j<n;j++)
 		{
-			printf("Enter the %d,%d element\n",i+1,j+1);
 			scanf("%d",&cost[i][j]);
 		}
 	}
-	printf("\n");
-	
-	printf("The Cost Adjacency matrix entered is:\n");
-	for(i=0;i<n;i++)
-	{
-		for(j=0;j<n;j++)
-		{
-			printf("%d\t",cost[i][j]);
-		}
-		printf("\n");
-	}
+
 	printf("\n");
 	printf("Enter the source vertex\n");
 	scanf("%d",&src);
@@ -56,23 +45,18 @@ void dijkstra(int n,int cam[max][max],int src)
 		
 		for(j=0;j<n;j++)
 		{
-			if(visited[j]==0)
-			{	
-				if(d[j]<min)
-				{	min=d[j];
-					u=j;
-				}
+			if(visited[j]==0 && d[j]<min)
+			{
+				min=d[j];
+				u=j;
 			}
 		}
 		visited[u]=1;
 		for(v=0;v<n;v++)
 		{
-			if(visited[v]==0)
+			if(visited[v]==0 && d[u]+cam[u][v]<d[v])
 			{	
-				if(d[u]+cam[u][v]<d[v])
-				{
-					d[v]=d[u]+cam[u][v];
-				}
+				d[v]=d[u]+cam[u][v];
 			}
 		}
 	}
@@ -86,31 +70,3 @@ void dijkstra(int n,int cam[max][max],int src)
 	}
 		
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
