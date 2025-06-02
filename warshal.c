@@ -43,14 +43,6 @@ void main()
 		}
 	}
 	
-	printf("The Matrix entered is\n");
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("%d\t",a[i][j]);
-				
-		}
-		printf("\n");
-	}
 	printf("The transitive closure for the graph is\n");
 	wrshl(n,a);
 }
