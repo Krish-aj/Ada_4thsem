@@ -1,59 +1,39 @@
-// Floyd using openmp
-#include<stdio.h>
+#include <stdio.h>
 
-
-void floyd(int n,int cam[20][20]);
-void printmat(int dist[20][20],int n);
-
-void main()
-{
-  int cam[20][20],n,j,i;
-  
-  
-  printf("enter the number of vertices\n");
-   scanf("%d",&n);
-  
-  printf("enter the cost adjacency matrix\n");
-   for(i=0;i<n;i++)
-      for(j=0;j<n;j++)
-          scanf("%d",&cam[i][j]);
-
-  floyd(n,cam);
+int min(int a,int b){
+    if(a<b) return a;
+    else return b;
 }
 
-void floyd(int n,int cam[20][20])
-{
-  int i,k,j,dist[20][20];
-  
-   for(i=0;i<n;i++)
-    for(j=0;j<n;j++)
-       dist[i][j]=cam[i][j];
-
-   
- for(k=0;k<n;k++)
-     for(i=0;i<n;i++)
-      for(j=0;j<n;j++)
-         if(dist[i][j]>dist[i][k]+dist[k][j])
-              dist[i][j]=dist[i][k]+dist[k][j];
-  printmat(dist,n);
-
-}
-
-void printmat(int dist[20][20],int n)
-{ 
-   int i,j;
-    for(i=0;i<n;i++)
-      for(j=0;j<n;j++)
-        if(i==j)
-          dist[i][j]=0;
-
-   printf("matrix containing shortest distance between two vertices is\n");
- 
-    for(i=0;i<n;i++)
-   {
-    printf("\n");
-      for(j=0;j<n;j++)
-         printf("%d\t",dist[i][j]);
+void floyd(int n,int a[10][10]){
+    int i,j,k;
+    for(k=1;k<=n;k++){
+        for(i=1;i<=n;i++){
+            for(j=1;j<=n;j++){
+                a[i][j]=min(a[i][j],a[i][k]+a[k][j]);
+            }
+        }
     }
-
+}
+int main(){
+    int i,j,a[10][10],n;
+    
+    printf("enter the no of vertex: ");
+    scanf("%d",&n);
+    
+    printf("enter am\n");
+    for(i=1;i<=n;i++){
+        for(j=1;j<=n;j++){
+            scanf("%d",&a[i][j]);
+        }
+    }
+    floyd(n,a);
+    
+    printf("shortest path matrix\n");
+    for(i=1;i<=n;i++){
+        printf("\n");
+        for(j=1;j<=n;j++){
+            printf("%d ",a[i][j]);
+        }
+    }
 }
