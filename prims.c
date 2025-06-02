@@ -16,21 +16,11 @@ for(i=1;i<=n;i++)
  {
 	for(j=1;j<=n;j++)
 	 {
-		printf("Enter the edge %d,%d\n",i,j);
 	  scanf("%d",&cost[i][j]);
 		if(cost[i][j]==0)
 		cost[i][j]=999;
 	 }
  }
-printf("The matrix entered is \n");
-for(i=1;i<=n;i++)
- {
-	for(j=1;j<=n;j++)
-	 {
-	 printf("%d\t",cost[i][j]);
-	 }
-	printf("\n");
- }											//Mat end
 
 visited[1]=1;
 while(ne<n)
@@ -56,30 +46,3 @@ while(ne<n)
 	}
 printf("The total cost of the MCST is = %d \n",mincost);
 }
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
