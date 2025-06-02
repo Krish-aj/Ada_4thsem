@@ -1,51 +1,35 @@
-#include<stdio.h>
+#include <stdio.h>
 
-void wrshl(int n,int a[20][20])
-{
-	int i,j,k,m1[20][20],m2[20][20];
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			m1[i][j]=a[i][j];
-		}
-	}
-	
-	for(k=0;k<n;k++){
-		for(i=0;i<n;i++){
-			for(j=0;j<n;j++){
-				m2[i][j]=(m1[i][j] || (m1[i][k] && m1[k][j]));
-			}
-		}
-			
-		for(i=0;i<n;i++){
-			for(j=0;j<n;j++){
-				m1[i][j]=m2[i][j];
-			}
-		}
-	}
-	
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("%d\t",m2[i][j]);
-		}
-		printf("\n");
-	}
+
+void warshal(int n,int a[10][10]){
+    int i,j,k;
+    for(k=0;k<n;k++){
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                a[i][j]=(a[i][j] || (a[i][k] && a[k][j]));
+            }
+        }
+    }
 }
-void main()
-{
-	int i,j,k,n,a[20][20];
-	printf("Enter the no of vertices\n");
-	scanf("%d",&n);
-	printf("Enter the AM\n");
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("Enter Edge %d,%d\n",i+1,j+1);
-			scanf("%d",&a[i][j]);
-		}
-	}
-	
-	printf("The transitive closure for the graph is\n");
-	wrshl(n,a);
+int main(){
+    int i,j,a[10][10],n;
+    
+    printf("enter the no of vertex: ");
+    scanf("%d",&n);
+    
+    printf("enter am\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            scanf("%d",&a[i][j]);
+        }
+    }
+    warshal(n,a);
+    
+    printf("shortest path matrix\n");
+    for(i=0;i<n;i++){
+        printf("\n");
+        for(j=0;j<n;j++){
+            printf("%d \t",a[i][j]);
+        }
+    }
 }
-
-
-	
