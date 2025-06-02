@@ -7,9 +7,9 @@ int min(int a,int b){
 
 void floyd(int n,int a[10][10]){
     int i,j,k;
-    for(k=1;k<=n;k++){
-        for(i=1;i<=n;i++){
-            for(j=1;j<=n;j++){
+    for(k=0;k<n;k++){
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
                 a[i][j]=min(a[i][j],a[i][k]+a[k][j]);
             }
         }
@@ -22,18 +22,18 @@ int main(){
     scanf("%d",&n);
     
     printf("enter am\n");
-    for(i=1;i<=n;i++){
-        for(j=1;j<=n;j++){
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
             scanf("%d",&a[i][j]);
         }
     }
     floyd(n,a);
     
     printf("shortest path matrix\n");
-    for(i=1;i<=n;i++){
+    for(i=0;i<n;i++){
         printf("\n");
-        for(j=1;j<=n;j++){
-            printf("%d ",a[i][j]);
+        for(j=0;j<n;j++){
+            printf("%d \t",a[i][j]);
         }
     }
 }
