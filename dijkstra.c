@@ -1,6 +1,3 @@
-//PROGRAM to find SHORTEST DISTANCE SHORTEST PATH from a given source to all the vertices in
-//a weighted,directed graph using DIJKSTRA'S ALGORITHM
-
 #include<stdio.h>
 #define max 20
 
@@ -29,7 +26,7 @@ void main()
 
 void dijkstra(int n,int cam[max][max],int src)
 {
-	int i,j,min,u,v;
+	int i,min,u,v;
 	int d[max],visited[max];
 	
 	for(i=0;i<n;i++)
@@ -41,14 +38,12 @@ void dijkstra(int n,int cam[max][max],int src)
 	for(i=0;i<n;i++)
 	{
 		min=999;
-		u=-1;
-		
-		for(j=0;j<n;j++)
+		for(v=0;v<n;v++)
 		{
-			if(visited[j]==0 && d[j]<min)
+			if(visited[v]==0 && d[v]<min)
 			{
-				min=d[j];
-				u=j;
+				min=d[v];
+				u=v;
 			}
 		}
 		visited[u]=1;
@@ -60,7 +55,6 @@ void dijkstra(int n,int cam[max][max],int src)
 			}
 		}
 	}
-	printf("The shortest dist path from src to various vertices is\n");
 	for(v=0;v<n;v++)
 	{	
 		if(d[v]==999)
