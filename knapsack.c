@@ -17,12 +17,6 @@ void main()
 		scanf("%d%d",&w[i],&p[i]);
 
 	}
-	printf("the data input is\n");
-	printf("ITEM\tWEIGHT\tPROFIT\n");
-	for(i=0;i<n;i++)
-	{	
-		printf("%d\t%d\t%d\n",i,w[i],p[i] );
-	}
 	ks(n,m,w,p);
 
 }
